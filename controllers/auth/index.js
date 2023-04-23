@@ -1,12 +1,12 @@
 const { signup } = require("./signup");
-
+const { login } = require("./login");
 module.exports = {
   auth: {
     signup,
+    login,
   },
 };
 
-// const login = require("./login");
 // const logout = require("./logout");
 // const getCurrentUser = require("./getCurrentUser");
 // const updateUser = require("./updateUser");
