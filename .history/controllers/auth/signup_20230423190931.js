@@ -14,9 +14,9 @@ const signup = async (req, res) => {
 
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-  await User.create({ name, email, password: hashPassword });
+  await User.create({ name, email, password: hashPassword }); // создаём нового Userа
 
-  const newUser = await User.findOne({ email }); // создаём нового Userа
+  const newUser = await User.findOne({ email });
 
   const payload = {
     id: newUser._id,

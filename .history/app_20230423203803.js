@@ -16,7 +16,7 @@ app.use(express.json()); // использование middleware для обр�
 const AuthRouter = require("./routes/auth");
 
 app.use("/api/auth", AuthRouter);
-
+app.use(router);
 app.use((error, req, res, next) => {
   if (HttpError) {
     return res.status(error.status).json({ message: error.message });

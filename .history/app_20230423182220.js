@@ -14,9 +14,6 @@ app.use(cors()); // использование middleware для управле�
 app.use(express.json()); // использование middleware для обработки тела запросов в формате JSON.
 
 const AuthRouter = require("./routes/auth");
-
-app.use("/api/auth", AuthRouter);
-
 app.use((error, req, res, next) => {
   if (HttpError) {
     return res.status(error.status).json({ message: error.message });

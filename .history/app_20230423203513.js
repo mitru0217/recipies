@@ -13,7 +13,7 @@ app.use(logger(formatsLogger)); // использование middleware для 
 app.use(cors()); // использование middleware для управления доступом к серверу с разных доменов.
 app.use(express.json()); // использование middleware для обработки тела запросов в формате JSON.
 
-const AuthRouter = require("./routes/auth");
+const AuthRouter = require("./routes");
 
 app.use("/api/auth", AuthRouter);
 

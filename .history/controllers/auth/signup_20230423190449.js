@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { User } = require("../../models");
-const { HttpError, ctrlWrapper } = require("../../helpers");
+const { HttpError } = require("../../helpers");
 const { SECRET_KEY } = process.env;
 
 const signup = async (req, res) => {
@@ -16,7 +16,7 @@ const signup = async (req, res) => {
 
   await User.create({ name, email, password: hashPassword });
 
-  const newUser = await User.findOne({ email }); // создаём нового Userа
+  const newUser = await User.findOne({ email });
 
   const payload = {
     id: newUser._id,
@@ -41,6 +41,4 @@ const signup = async (req, res) => {
   });
 };
 
-module.exports = {
-  signup: ctrlWrapper(signup),
-};
+module.exports = signup;

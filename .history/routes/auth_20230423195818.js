@@ -1,7 +1,7 @@
 const express = require("express");
 const { auth: ctrl } = require("../controllers/auth");
 const { validateBody } = require("../middlewares");
-const { registerSchema } = require("../models");
+const { registerSchema, loginSchema } = require("../models");
 // const { uploadCloud } = require("../../middlewares/uploadAvatar");
 
 const router = express.Router();
