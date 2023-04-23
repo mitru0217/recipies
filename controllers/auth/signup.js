@@ -16,7 +16,7 @@ const signup = async (req, res) => {
 
   await User.create({ name, email, password: hashPassword });
 
-  const newUser = await User.findOne({ email }); // создаём нового Userа
+  const newUser = await User.findOne({ email });
 
   const payload = {
     id: newUser._id,

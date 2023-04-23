@@ -1,7 +1,7 @@
 const mongoose = require("mongoose"); //  Mongoose - это библиотека JavaScript,которая используется для подключения и работы с MongoDB - NoSQL базой данных.
 
 const app = require("./app");
-const { DB_HOST, PORT = 8000 } = process.env; // process.env - это объект, содержащий переменные окружения в Node.js.
+const { DB_HOST, PORT = 3000 } = process.env; // process.env - это объект, содержащий переменные окружения в Node.js.
 
 mongoose.set("strictQuery", true);
 

@@ -1,7 +1,7 @@
 const express = require("express"); //создание объекта приложения Express, который будет использоваться для создания сервера.
 const logger = require("morgan"); // подключение middleware для логирования запросов и ответов.
 const cors = require("cors"); //  подключение middleware для управления доступом к серверу с разных доменов.
-const { HttpError } = require("./helpers");
+// const { HttpError } = require("./helpers");
 
 require("dotenv").config(); // загрузка переменных окружения из файла .env.
 
@@ -17,12 +17,21 @@ const AuthRouter = require("./routes/auth");
 
 app.use("/api/auth", AuthRouter);
 
-app.use((error, req, res, next) => {
-  if (HttpError) {
-    return res.status(error.status).json({ message: error.message });
-  }
-
-  res.status(500).json({ message: `Internal server error: ${error.message}` }); // обработка ошибок, возникающих в ходе работы сервера. Если ошибка является экземпляром класса HttpError, то отправляется соответствующий HTTP-статус и сообщение об ошибке. В противном случае, отправляется статус 500 и сообщение обо всех внутренних ошибках сервера.
+app.use((req, res) => {
+  res.status(404).json({ message: "Not found" });
 });
+
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Server error" } = err;
+  res.status(status).json({ message });
+});
+
+// app.use((error, req, res, next) => {
+//   if (HttpError) {
+//     return res.status(error.status).json({ message: error.message });
+//   }
+
+//   res.status(500).json({ message: `Internal server error: ${error.message}` }); // обработка ошибок, возникающих в ходе работы сервера. Если ошибка является экземпляром класса HttpError, то отправляется соответствующий HTTP-статус и сообщение об ошибке. В противном случае, отправляется статус 500 и сообщение обо всех внутренних ошибках сервера.
+// });
 
 module.exports = app;
