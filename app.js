@@ -26,12 +26,4 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-// app.use((error, req, res, next) => {
-//   if (HttpError) {
-//     return res.status(error.status).json({ message: error.message });
-//   }
-
-//   res.status(500).json({ message: `Internal server error: ${error.message}` }); // обработка ошибок, возникающих в ходе работы сервера. Если ошибка является экземпляром класса HttpError, то отправляется соответствующий HTTP-статус и сообщение об ошибке. В противном случае, отправляется статус 500 и сообщение обо всех внутренних ошибках сервера.
-// });
-
 module.exports = app;
