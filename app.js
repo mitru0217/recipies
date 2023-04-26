@@ -1,4 +1,4 @@
-const express = require("express"); //создание объекта приложения Express, который будет использоваться для создания сервера.
+const express = require("express"); // создание объекта приложения Express, который будет использоваться для создания сервера.
 const logger = require("morgan"); // подключение middleware для логирования запросов и ответов.
 const cors = require("cors"); //  подключение middleware для управления доступом к серверу с разных доменов.
 // const { HttpError } = require("./helpers");

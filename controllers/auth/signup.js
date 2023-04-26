@@ -12,7 +12,7 @@ const signup = async (req, res) => {
     throw HttpError(409, "Email in use"); // Если пользователь с таким email уже существует, функция генерирует исключение HttpError, с кодом 409 и сообщением "Email in use"
   }
 
-  const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10)); //генерирую хеш пароль с помощью bcrypt,
+  const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10)); // генерирую хеш пароль с помощью bcrypt,
 
   await User.create({ name, email, password: hashPassword }); // сохраняем пароль в базе данных
 
@@ -22,7 +22,7 @@ const signup = async (req, res) => {
     id: newUser._id,
   };
 
-  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" }); //генерируется новый токен JWT, используя секретный ключ SECRET_KEY, который сохранен в переменной окружения.
+  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "24h" }); // генерируется новый токен JWT, используя секретный ключ SECRET_KEY, который сохранен в переменной окружения.
   newUser.token = token;
   await newUser.save(); // токен сохраняется в базе данных для пользователя
 
